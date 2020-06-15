@@ -12,7 +12,10 @@ class Shopify::Kaminari::Collection < ActiveResource::Collection
   include ::Kaminari::ConfigurationMethods
 
   alias_method :model, :resource_class
-  delegate :cursor_based?, to: :resource_class
+  # delegate :cursor_based?, to: :resource_class
+  def cursor_based?
+    true # last version shopify api all cursor based
+  end
 
   # Shopify returns this many records by default if no limit is given.
   DEFAULT_LIMIT_VALUE = 50
